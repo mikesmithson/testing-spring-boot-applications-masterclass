@@ -61,5 +61,13 @@ class ReviewControllerTest {
   @Test
   @WithMockUser(roles = "moderator")
   void shouldAllowDeletingReviewsWhenUserIsAuthenticatedAndHasModeratorRole() throws Exception {
+    this.mockMvc
+        .perform(
+            delete("/api/books/{isbn}/reviews/{reviewId}", 42, 3)
+            // .with(jwt().authorities(new SimpleGrantedAuthority("ROLE_moderator")))
+            )
+        .andExpect(status().isOk());
+
+    verify(reviewService).deleteReview("42", 3L);
   }
 }
