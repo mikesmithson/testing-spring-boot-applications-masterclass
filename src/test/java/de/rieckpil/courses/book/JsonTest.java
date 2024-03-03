@@ -1,11 +1,11 @@
 package de.rieckpil.courses.book;
 
+import java.util.List;
+
 import com.jayway.jsonpath.JsonPath;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,7 +24,8 @@ public class JsonTest {
 
   @Test
   void testWithJsonPath() throws JSONException {
-    String result = """
+    String result =
+        """
         {"age":"42", "name": "duke", "tags":["java", "jdk"], "orders": [42, 42, 16]};
       """;
     assertThat(JsonPath.parse(result).read("$.age", Integer.class)).isEqualTo(42);

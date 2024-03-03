@@ -10,9 +10,9 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
 import org.junit.jupiter.api.extension.ParameterResolver;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import static java.lang.annotation.ElementType.PARAMETER;
+
 public class RandomReviewParameterResolverExtension implements ParameterResolver {
 
   private static final List<String> badReviews =

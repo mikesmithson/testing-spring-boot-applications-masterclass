@@ -8,7 +8,6 @@ import javax.sql.DataSource;
 import de.rieckpil.courses.book.management.Book;
 import de.rieckpil.courses.book.management.User;
 import jakarta.persistence.EntityManager;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +46,8 @@ class ReviewRepositoryTest {
     assertThat(reviewRepository).isNotNull();
     assertThat(dataSource).isNotNull();
     assertThat(testEntityManager).isNotNull();
-    System.out.println("using database: " + dataSource.getConnection().getMetaData().getDatabaseProductName());
+    System.out.println(
+        "using database: " + dataSource.getConnection().getMetaData().getDatabaseProductName());
 
     Book java = new Book();
     java.setTitle("Java Book");
@@ -66,7 +66,8 @@ class ReviewRepositoryTest {
     Review goodReview = new Review();
     goodReview.setBook(java);
     goodReview.setTitle("Review of Java Book");
-    goodReview.setContent("A great book for java developers at any skill level written by the founder of the language himself");
+    goodReview.setContent(
+        "A great book for java developers at any skill level written by the founder of the language himself");
     goodReview.setRating(5);
     goodReview.setUser(user);
     goodReview.setCreatedAt(LocalDateTime.now());
@@ -94,13 +95,13 @@ class ReviewRepositoryTest {
     Review goodReview = new Review();
     goodReview.setBook(java);
     goodReview.setTitle("Review of Java Book");
-    goodReview.setContent("A great book for java developers at any skill level written by the founder of the language himself");
+    goodReview.setContent(
+        "A great book for java developers at any skill level written by the founder of the language himself");
     goodReview.setRating(5);
     goodReview.setUser(user);
     goodReview.setCreatedAt(LocalDateTime.now());
 
     Review savedReview = reviewRepository.save(goodReview);
     assertThat(savedReview.getId()).isNotNull();
-
   }
 }

@@ -1,6 +1,5 @@
 package de.rieckpil.courses.book.review;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
@@ -35,10 +34,9 @@ class ReviewVerifierTest {
   @Test
   @DisplayName("Should fail when review contains 'lorem ipsum'")
   void testLoremIpsum() {
-    var review =  "Hi there and lorem ipsum";
+    var review = "Hi there and lorem ipsum";
     boolean meetsQualityStandards = reviewVerifier.doesMeetQualityStandards(review);
     assertFalse(meetsQualityStandards, "Review should contain lorem ipsum");
-
   }
 
   @ParameterizedTest
@@ -56,18 +54,17 @@ class ReviewVerifierTest {
 
   @Test
   void shouldPassWhenReviewIsGood() {
-    String goodReview  = "I would recommend this book for all levels interested in learning Java";
+    String goodReview = "I would recommend this book for all levels interested in learning Java";
     boolean meetsQualityStandards = reviewVerifier.doesMeetQualityStandards(goodReview);
     assertTrue(meetsQualityStandards, "Review did not meet quality standards");
   }
 
   @Test
-  void shouldPassWhenReviewIsGoodHamcrest() {
-  }
+  void shouldPassWhenReviewIsGoodHamcrest() {}
 
   @Test
   void shouldPassWhenReviewIsGoodAssertJ() {
-    String goodReview  = "I would recommend this book for all levels interested in learning Java";
+    String goodReview = "I would recommend this book for all levels interested in learning Java";
     boolean meetsQualityStandards = reviewVerifier.doesMeetQualityStandards(goodReview);
     assertThat(meetsQualityStandards).describedAs("Review meets quality standards").isTrue();
   }
