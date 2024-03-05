@@ -59,6 +59,7 @@ class BookControllerTest {
     mockMvc.perform(get("/api/books")
       .accept(MediaType.APPLICATION_JSON))
       .andExpect(status().isOk())
+      .andExpect(jsonPath("[0].id").doesNotExist())
       .andExpect(jsonPath("$[0].isbn", equalTo("12345")))
       .andExpect(jsonPath("$[0].title", equalTo("Test")))
       .andExpect(jsonPath("$[0].author", equalTo("Test Author")))
